@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #11083c;
+  --foreground: #f7f4ff;
+  --panel: #3b3388;
+  --panel-strong: #443b98;
+  --line: #8f86d2;
+  --text-muted: #d7d2ff;
+  --phone-min-width: 360px;
+  --phone-width: clamp(var(--phone-min-width), 92vw, 430px);
+  --phone-height: 852px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-monument);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top right, rgba(102, 92, 203, 0.44), transparent 26rem),
+    radial-gradient(circle at bottom left, rgba(96, 85, 217, 0.28), transparent 24rem),
+    linear-gradient(180deg, #12073f 0%, #16085a 55%, #2b1aa0 100%);
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-monument), sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(102, 92, 203, 0.44), transparent 26rem),
+    radial-gradient(circle at bottom left, rgba(96, 85, 217, 0.28), transparent 24rem),
+    linear-gradient(180deg, #12073f 0%, #16085a 55%, #2b1aa0 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.font-display {
+  font-family: var(--font-monument), sans-serif;
+}
+
+.phone-shell {
+  width: min(100%, var(--phone-width));
+  height: 100svh;
+  background:
+    radial-gradient(circle at top center, rgba(132, 123, 211, 0.18), transparent 18rem),
+    linear-gradient(180deg, #14073f 0%, #17085c 56%, #2d1ca0 100%);
+}
+
+.phone-scroll {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.phone-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Subtle floating background orbs */
+@keyframes bg-float-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(1.5rem, -0.75rem) scale(1.03);
+  }
+  66% {
+    transform: translate(-1rem, 0.5rem) scale(0.98);
+  }
+}
+
+@keyframes bg-float-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-1.25rem, 1rem) scale(1.02);
+  }
+  66% {
+    transform: translate(0.75rem, -0.5rem) scale(0.99);
+  }
+}
+
+@keyframes bg-float-3 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0.5rem, -0.75rem);
+  }
+}
+
+@keyframes bg-float-4 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-0.5rem, 0.5rem);
+  }
+}
+
+.bg-float-1 {
+  animation: bg-float-1 10s ease-in-out infinite;
+}
+
+.bg-float-2 {
+  animation: bg-float-2 12s ease-in-out infinite;
+}
+
+.bg-float-3 {
+  animation: bg-float-3 8s ease-in-out infinite;
+}
+
+.bg-float-4 {
+  animation: bg-float-4 11s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .phone-shell {
+    width: var(--phone-width);
+    height: var(--phone-height);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2.75rem;
+    box-shadow:
+      0 42px 90px rgba(8, 5, 39, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
 }
