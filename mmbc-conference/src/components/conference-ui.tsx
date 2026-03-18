@@ -371,20 +371,26 @@ const floorPlanZones = [
 
 function AppShell({ children }: { children: ReactNode }) {
   return (
-    <main className="relative min-h-screen overflow-x-hidden px-3 py-4 text-white sm:grid sm:place-items-center sm:p-8">
+    <main className="relative min-h-[100dvh] overflow-x-hidden px-3 py-0 text-white sm:px-6 sm:py-0 sm:grid sm:place-items-center">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="bg-float-1 absolute right-[-10rem] top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-[#625cce]/28 blur-3xl" />
         <div className="bg-float-2 absolute bottom-[-12rem] left-[-9rem] h-[32rem] w-[32rem] rounded-full bg-[#5641d9]/24 blur-3xl" />
       </div>
 
-      <div className="phone-shell relative mx-auto flex w-full max-w-[26.875rem] flex-col overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        className="relative mx-auto w-full max-w-[26.875rem]"
+        style={{
+          paddingTop: "calc(0.75rem + env(safe-area-inset-top))",
+          paddingBottom: "calc(2rem + env(safe-area-inset-bottom))",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden">
           <div className="bg-float-3 absolute right-[-7rem] top-[-6.5rem] h-64 w-64 rounded-full bg-[#6a62c4]/45" />
           <div className="bg-float-4 absolute bottom-[-8rem] left-[-6rem] h-72 w-72 rounded-full bg-[#5f56d8]/34 blur-[2px]" />
           <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#24108d]/35 to-transparent" />
         </div>
 
-        <div className="phone-scroll relative flex min-h-0 flex-1 flex-col gap-5 px-4 pb-8 pt-4">
+        <div className="relative flex flex-col gap-5 px-1 pt-4">
           {children}
         </div>
       </div>
