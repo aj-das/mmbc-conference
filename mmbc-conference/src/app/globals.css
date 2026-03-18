@@ -54,7 +54,7 @@ summary::-webkit-details-marker {
 
 .phone-shell {
   width: min(100%, var(--phone-width));
-  height: 100svh;
+  height: 100dvh;
   background:
     radial-gradient(circle at top center, rgba(132, 123, 211, 0.18), transparent 18rem),
     linear-gradient(180deg, #14073f 0%, #17085c 56%, #2d1ca0 100%);

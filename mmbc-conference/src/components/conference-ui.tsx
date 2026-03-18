@@ -371,7 +371,7 @@ const floorPlanZones = [
 
 function AppShell({ children }: { children: ReactNode }) {
   return (
-    <main className="relative min-h-screen overflow-hidden px-3 py-4 text-white sm:grid sm:place-items-center sm:p-8">
+    <main className="relative min-h-screen overflow-x-hidden px-3 py-4 text-white sm:grid sm:place-items-center sm:p-8">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="bg-float-1 absolute right-[-10rem] top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-[#625cce]/28 blur-3xl" />
         <div className="bg-float-2 absolute bottom-[-12rem] left-[-9rem] h-[32rem] w-[32rem] rounded-full bg-[#5641d9]/24 blur-3xl" />
