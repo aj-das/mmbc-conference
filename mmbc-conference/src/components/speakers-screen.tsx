@@ -2,19 +2,31 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ChevronDown, Search } from "lucide-react";
-import { speakerItems } from "./conference-ui";
+import { ArrowLeft, ChevronDown, Mic, Search } from "lucide-react";
+import { speakerSessions } from "./conference-ui";
+import type { SpeakerSession } from "./conference-ui";
 
 export function SpeakersScreen() {
   const [query, setQuery] = useState("");
 
-  const filtered = speakerItems.filter(
-    (s) =>
-      query === "" ||
-      s.name.toLowerCase().includes(query.toLowerCase()) ||
-      s.focus.toLowerCase().includes(query.toLowerCase()) ||
-      s.role.toLowerCase().includes(query.toLowerCase())
-  );
+  // Filter sessions: keep a session if any speaker's name or role matches
+  const filtered: SpeakerSession[] = speakerSessions
+    .map((session) => {
+      if (query === "") return session;
+      const matchedSpeakers = session.speakers.filter(
+        (s) =>
+          s.name.toLowerCase().includes(query.toLowerCase()) ||
+          s.role.toLowerCase().includes(query.toLowerCase())
+      );
+      const titleMatches = session.title
+        .toLowerCase()
+        .includes(query.toLowerCase());
+      if (titleMatches) return session;
+      if (matchedSpeakers.length > 0)
+        return { ...session, speakers: matchedSpeakers };
+      return null;
+    })
+    .filter(Boolean) as SpeakerSession[];
 
   return (
     <main className="relative min-h-screen overflow-hidden px-3 py-4 text-white sm:grid sm:place-items-center sm:p-8">
@@ -31,7 +43,7 @@ export function SpeakersScreen() {
         </div>
 
         <div className="phone-scroll relative flex min-h-0 flex-1 flex-col gap-5 px-4 pb-8 pt-4">
-          <section className="space-y-6 pb-6">
+          <section className="space-y-5 pb-6">
             {/* Back */}
             <Link
               href="/"
@@ -49,10 +61,10 @@ export function SpeakersScreen() {
                 Speakers
               </h1>
               <p className="text-[0.875rem] leading-5 tracking-[-0.04em] text-[#d7d2ff]">
-                Meet the experts behind the sessions.
+                The lineup for MMBC Conference 2026.
               </p>
               <p className="text-[0.75rem] leading-[1.35] tracking-[-0.02em] text-[#b8b0e8]">
-                Tap a card to read their bio and focus areas. Use search to find by name.
+                Tap a session to see who&apos;s speaking. Use search to find by name or topic.
               </p>
             </header>
 
@@ -61,61 +73,68 @@ export function SpeakersScreen() {
               <Search className="h-5 w-5 shrink-0" />
               <input
                 type="text"
-                placeholder="Search speakers"
+                placeholder="Search speakers or sessions"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="w-full bg-transparent text-[0.8125rem] font-medium tracking-[-0.03em] text-[#d7d2ff]/95 placeholder-[#d7d2ff]/60 outline-none"
               />
             </div>
 
-            {/* Speaker list */}
+            {/* Session list */}
             <div className="space-y-2">
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-[#9e93ff]">
-                Featured speakers
+              <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-[#9e93ff]">
+                Sessions &amp; speakers
               </p>
-              <div className="space-y-3">
-                {filtered.length === 0 ? (
-                  <div className="rounded-xl border border-[#8f86d2]/80 bg-[#41368d]/60 px-4 py-6 text-center">
-                    <p className="text-sm text-[#d7d2ff]">
-                      No speakers match your search.
-                    </p>
-                  </div>
-                ) : (
-                  filtered.map((speaker) => (
+
+              {filtered.length === 0 ? (
+                <div className="rounded-xl border border-[#8f86d2]/80 bg-[#41368d]/60 px-4 py-6 text-center">
+                  <p className="text-sm text-[#d7d2ff]">
+                    No speakers match your search.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {filtered.map((session) => (
                     <details
-                      key={speaker.name}
-                      className="group rounded-xl border border-[#8f86d2]/80 bg-[#41368d] px-4 py-4 shadow-[0_10px_28px_rgba(9,6,43,0.28)]"
+                      key={session.title}
+                      className="group rounded-xl border border-[#8f86d2]/80 bg-[#41368d] shadow-[0_10px_28px_rgba(9,6,43,0.28)]"
                     >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
-                        <div className="flex min-w-0 items-center gap-3">
-                          <div className="h-14 w-12 shrink-0 rounded-lg border border-[#6d63c6] bg-[#2a1f73]" />
-                          <div className="min-w-0">
-                            <h2 className="font-display text-base leading-tight tracking-[-0.06em] text-white">
-                              {speaker.name}
-                            </h2>
-                            <p className="mt-1 text-[0.75rem] font-medium leading-tight tracking-[-0.03em] text-[#d7d2ff]">
-                              {speaker.role}
-                            </p>
-                          </div>
-                        </div>
-                        <ChevronDown className="h-5 w-5 shrink-0 text-[#ddd8ff] transition group-open:rotate-180" />
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5">
+                        <h2 className="font-display text-sm leading-tight tracking-[-0.05em] text-white">
+                          {session.title}
+                        </h2>
+                        <ChevronDown className="h-4 w-4 shrink-0 text-[#ddd8ff] transition group-open:rotate-180" />
                       </summary>
 
-                      <div className="pt-3">
-                        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[#9e93ff]">
-                          Focus
-                        </p>
-                        <p className="mt-1.5 text-[0.8125rem] leading-5 text-[#ece8ff]">
-                          {speaker.focus}
-                        </p>
-                        <p className="mt-2 text-[0.8125rem] leading-5 text-[#ddd8ff]">
-                          {speaker.bio}
-                        </p>
+                      <div className="divide-y divide-white/8 border-t border-white/10">
+                        {session.speakers.map((speaker) => (
+                          <div
+                            key={speaker.name}
+                            className="flex items-start gap-3 px-4 py-3"
+                          >
+                            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#6d63c6] bg-[#2a1f73]">
+                              <Mic className="h-3.5 w-3.5 text-[#b8b0e8]" />
+                            </span>
+                            <div className="min-w-0">
+                              <p className="text-[0.8125rem] font-semibold leading-tight tracking-[-0.03em] text-white">
+                                {speaker.name}
+                                {speaker.isModerator && (
+                                  <span className="ml-2 rounded-full bg-[#3d2fa0] px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.1em] text-[#c4b8ff]">
+                                    Moderator
+                                  </span>
+                                )}
+                              </p>
+                              <p className="mt-0.5 text-[0.75rem] leading-[1.35] text-[#b8b0e8]">
+                                {speaker.role}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </details>
-                  ))
-                )}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         </div>
