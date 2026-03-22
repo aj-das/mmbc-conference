@@ -249,7 +249,7 @@ export const speakerSessions: SpeakerSession[] = [
       },
       {
         name: "Lydia Barry",
-        role: "VP, Marketing & Communications, The Team (Wasserman)",
+        role: "VP, Marketing & Communications, The · Team",
       },
       {
         name: "Christian Hoard",
@@ -341,13 +341,28 @@ export const speakerSessions: SpeakerSession[] = [
   },
 ];
 
-const sponsors = [
-  "AEG Presents",
-  "Chartmetric",
-  "Universal Music Group",
-  "The Orchard",
-  "Sony Music",
-  "CAA",
+const sponsors: { name: string; logo?: string }[] = [
+  { name: "AEG", logo: "/sponsors/aeg presents.jpg" },
+  { name: "Assistants v Agents", logo: "/sponsors/assistantsvsagents_logo.jpg" },
+  { name: "Bravado", logo: "/sponsors/bravado logo.png" },
+  { name: "Breakaway", logo: "/sponsors/breakaway.png" },
+  { name: "Cahoots" },
+  { name: "CashApp", logo: "/sponsors/Cash-App-Logo.png" },
+  { name: "Darkroom", logo: "/sponsors/darkroom.png" },
+  { name: "Depop", logo: "/sponsors/depop.png" },
+  { name: "Mars, Inc", logo: "/sponsors/mars logo.svg" },
+  { name: "MichGrads", logo: "/sponsors/michgrad.png" },
+  { name: "Nothing Bundt Cakes", logo: "/sponsors/nothing bundt cake.png" },
+  { name: "Rolling Stone", logo: "/sponsors/rolling stone.png" },
+  { name: "SB Vision", logo: "/sponsors/sbvision.png" },
+  { name: "[solidcore]", logo: "/sponsors/solidcore_Logo.jpg" },
+  { name: "SoulCycle", logo: "/sponsors/Soulcyclelogo.png" },
+  { name: "The · Team", logo: "/sponsors/the team logo.png" },
+  { name: "Too Lost", logo: "/sponsors/too lost.png" },
+  { name: "UMG", logo: "/sponsors/Universal_Music_Group_logo.svg" },
+  { name: "Unwell Network", logo: "/sponsors/unwell logo.jpg" },
+  { name: "UTA", logo: "/sponsors/uta_logo.svg" },
+  { name: "ZLI", logo: "/sponsors/ZLI_logo.png" },
 ];
 
 const floorPlanZones = [
@@ -523,13 +538,26 @@ export function SponsorsScreen() {
             Our partners
           </p>
           <div className="rounded-xl border border-[#8f86d2]/80 bg-[#3f3689] p-4 shadow-[0_10px_28px_rgba(9,6,43,0.28)]">
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3">
               {sponsors.map((sponsor) => (
                 <div
-                  key={sponsor}
-                  className="rounded-lg border border-white/12 bg-white/6 px-3 py-3 text-center font-display text-sm tracking-[-0.05em] text-white"
+                  key={sponsor.name}
+                  className="flex min-h-[4rem] flex-col items-center justify-center gap-4 rounded-lg border border-white/12 bg-white/6 px-3 py-5"
                 >
-                  {sponsor}
+                  {sponsor.logo ? (
+                    <div className="relative h-12 w-full shrink-0">
+                      <Image
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        fill
+                        className="object-contain object-center"
+                        sizes="(max-width: 400px) 50vw, 200px"
+                      />
+                    </div>
+                  ) : null}
+                  <span className="font-display text-center text-sm tracking-[-0.05em] text-white">
+                    {sponsor.name}
+                  </span>
                 </div>
               ))}
             </div>
