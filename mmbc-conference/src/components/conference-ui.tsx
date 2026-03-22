@@ -465,7 +465,7 @@ function SectionHeading({
 
 function ConferenceLogo() {
   return (
-    <header className="shrink-0 pt-2 -mb-4">
+    <header className="shrink-0 pt-2">
       <div className="mx-auto w-full max-w-[18rem]">
         <Image
           src="/conferencelogo.png"
@@ -484,9 +484,10 @@ export function HomeScreen() {
   return (
     <AppShell>
       <section className="relative flex min-h-0 flex-1 flex-col gap-4 pb-4">
-        <ConferenceLogo />
-
-        <NextUpCard events={scheduleItems as ScheduledEvent[]} />
+        <div className="flex flex-col gap-1">
+          <ConferenceLogo />
+          <NextUpCard events={scheduleItems as ScheduledEvent[]} />
+        </div>
 
         <section className="flex min-h-0 flex-1 flex-col">
           <h3 className="shrink-0 font-display text-center text-xl tracking-[-0.07em] text-white">
