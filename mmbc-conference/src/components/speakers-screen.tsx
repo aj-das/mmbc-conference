@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ChevronDown, Mic, Search } from "lucide-react";
-import { speakerSessions } from "./conference-ui";
+import { AppShell, speakerSessions } from "./conference-ui";
 import type { SpeakerSession } from "./conference-ui";
 
 export function SpeakersScreen() {
@@ -29,22 +29,9 @@ export function SpeakersScreen() {
     .filter(Boolean) as SpeakerSession[];
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-3 py-4 text-white sm:grid sm:place-items-center sm:p-8">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="bg-float-1 absolute right-[-10rem] top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-[#625cce]/28 blur-3xl" />
-        <div className="bg-float-2 absolute bottom-[-12rem] left-[-9rem] h-[32rem] w-[32rem] rounded-full bg-[#5641d9]/24 blur-3xl" />
-      </div>
-
-      <div className="phone-shell relative mx-auto flex min-h-[min(100vh,36rem)] w-full max-w-[24.375rem] flex-col overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="bg-float-3 absolute right-[-7rem] top-[-6.5rem] h-64 w-64 rounded-full bg-[#6a62c4]/45" />
-          <div className="bg-float-4 absolute bottom-[-8rem] left-[-6rem] h-72 w-72 rounded-full bg-[#5f56d8]/34 blur-[2px]" />
-          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#24108d]/35 to-transparent" />
-        </div>
-
-        <div className="phone-scroll relative flex min-h-0 flex-1 flex-col gap-5 px-4 pb-8 pt-4">
-          <section className="space-y-5 pb-6">
-            {/* Back */}
+    <AppShell>
+      <section className="space-y-5 pb-6">
+        {/* Back */}
             <Link
               href="/"
               className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
@@ -136,9 +123,7 @@ export function SpeakersScreen() {
                 </div>
               )}
             </div>
-          </section>
-        </div>
-      </div>
-    </main>
+      </section>
+    </AppShell>
   );
 }

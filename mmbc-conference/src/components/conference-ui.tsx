@@ -369,7 +369,7 @@ const floorPlanZones = [
   },
 ];
 
-function AppShell({ children }: { children: ReactNode }) {
+export function AppShell({ children }: { children: ReactNode }) {
   return (
     <main className="relative min-h-[100dvh] overflow-x-hidden px-3 py-0 text-white sm:px-6 sm:py-0 sm:grid sm:place-items-center">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
