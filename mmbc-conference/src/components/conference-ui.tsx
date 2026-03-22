@@ -5,10 +5,7 @@ import {
   ArrowLeft,
   BadgeDollarSign,
   CalendarDays,
-  ChevronDown,
   Map,
-  MapPin,
-  MicVocal,
   UsersRound,
 } from "lucide-react";
 import { NextUpCard } from "./next-up-card";
