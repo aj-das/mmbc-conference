@@ -466,7 +466,7 @@ function SectionHeading({
 function ConferenceLogo() {
   return (
     <header className="shrink-0 pt-2 -mb-4">
-      <div className="mx-auto w-full max-w-[13rem]">
+      <div className="mx-auto w-full max-w-[18rem]">
         <Image
           src="/conferencelogo.png"
           alt="Conference"
