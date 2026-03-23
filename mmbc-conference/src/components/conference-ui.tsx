@@ -362,25 +362,6 @@ const sponsors: { name: string; logo?: string }[] = [
   { name: "ZLI", logo: "/sponsors/ZLI_logo.png" },
 ];
 
-const floorPlanZones = [
-  {
-    name: "Main Lobby",
-    detail: "Registration, coffee lounge, and sponsor welcome desk.",
-  },
-  {
-    name: "Auditorium A",
-    detail: "Keynotes, featured talks, and large-format programming.",
-  },
-  {
-    name: "Auditorium B",
-    detail: "Panels and brand partnership sessions.",
-  },
-  {
-    name: "Studio Room 2",
-    detail: "Hands-on workshops and smaller breakout sessions.",
-  },
-];
-
 export function AppShell({ children }: { children: ReactNode }) {
   return (
     <main className="relative min-h-[100dvh] overflow-x-hidden px-3 py-0 text-white sm:px-6 sm:py-0 sm:grid sm:place-items-center">
@@ -569,35 +550,29 @@ export function SponsorsScreen() {
 export function FloorPlanScreen() {
   return (
     <AppShell>
-      <section className="space-y-6 pb-6">
+      <section className="space-y-5 pb-6">
         <BackButton />
         <SectionHeading
           title="Floor Plan"
           subtitle="Find your way around the venue."
-          hint="Tap a location to see what’s there. Use this list to plan where to go between sessions."
+          hint="Tap to view full size. Pinch or scroll to zoom."
         />
-        <div className="space-y-2">
-          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-[#9e93ff]">
-            Venue locations
-          </p>
-          <div className="rounded-xl border border-[#8f86d2]/80 bg-[#3f3689] p-4 shadow-[0_10px_28px_rgba(9,6,43,0.28)]">
-            <div className="space-y-2">
-              {floorPlanZones.map((zone) => (
-                <div
-                  key={zone.name}
-                  className="rounded-lg border border-white/12 bg-white/6 px-3 py-3"
-                >
-                  <p className="font-display text-sm tracking-[-0.05em] text-white">
-                    {zone.name}
-                  </p>
-                  <p className="mt-1 text-[0.8125rem] leading-5 text-[#d7d2ff]">
-                    {zone.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
+        <a
+          href="/MMBC%20CONF%20MAP.jpeg"
+          className="block overflow-hidden rounded-2xl border-2 border-[#8f86d2]/60 bg-[#2b2178]/60 shadow-[0_20px_50px_rgba(0,0,0,0.4),0_0_0_1px_rgba(143,134,210,0.2),inset_0_1px_0_rgba(255,255,255,0.08)] transition active:scale-[0.99]"
+        >
+          <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-auto overscroll-contain">
+            <Image
+              src="/MMBC%20CONF%20MAP.jpeg"
+              alt="MMBC Conference venue floor plan"
+              width={1920}
+              height={1440}
+              className="min-h-full min-w-full cursor-pointer object-contain object-top"
+              sizes="(max-width: 430px) 100vw, 430px"
+              priority
+            />
           </div>
-        </div>
+        </a>
       </section>
     </AppShell>
   );
