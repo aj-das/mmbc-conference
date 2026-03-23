@@ -202,7 +202,7 @@ export const scheduleItems: EventItem[] = [
 
 export const speakerSessions: SpeakerSession[] = [
   {
-    title: "Fireside Chats",
+    title: "Fireside Chat — Keynote",
     speakers: [
       {
         name: "Jacqueline Saturn",
@@ -215,120 +215,64 @@ export const speakerSessions: SpeakerSession[] = [
     ],
   },
   {
-    title: "How Tours Get Greenlit: Agents X Promoters X Managers",
+    title: "How Tours Get Greenlit Panel",
     speakers: [
-      {
-        name: "Vinnie Ferra",
-        role: "Co-Founder, The Beehive LA",
-      },
-      {
-        name: "Howard Handler",
-        role: "President, 313 Presents",
-      },
+      { name: "Vinnie Ferra", role: "Co-Founder, The Beehive LA" },
+      { name: "Howard Handler", role: "President, 313 Presents" },
     ],
   },
   {
     title: "Scroll to Stream: Media Driving Music Discovery",
     speakers: [
-      {
-        name: "Tyler Eilenberg",
-        role: "VP, Fan Engagement & Digital Strategy, EMPIRE",
-        isModerator: true,
-      },
-      {
-        name: "Harrison Golding",
-        role: "SVP of Strategic Marketing, EMPIRE",
-      },
-      {
-        name: "Lydia Barry",
-        role: "VP, Marketing & Communications, The · Team",
-      },
-      {
-        name: "Christian Hoard",
-        role: "Executive Music Editor, Rolling Stone",
-      },
-      {
-        name: "Andrew Spellman",
-        role: "Partner, Mutual Friends",
-      },
-    ],
-  },
-  {
-    title: "Making a Hit: Inside the Creative Process",
-    speakers: [
-      {
-        name: "Sol Was",
-        role: "Producer / Songwriter",
-      },
-      {
-        name: "Leven Kali",
-        role: "Artist, Producer, Songwriter",
-      },
+      { name: "Lydia Barry", role: "VP, Marketing & Communications, The · Team" },
+      { name: "Christian Hoard", role: "Executive Music Editor, Rolling Stone" },
+      { name: "Andrew Spelman", role: "Partner, Mutual Friends" },
+      { name: "Harrison Golding", role: "Partner & Co-Founder, Choatic Good Projects" },
+      { name: "Tyler Eilenberg", role: "VP of Fan Engagement & Digital Strategy, EMPIRE" },
     ],
   },
   {
     title: "Money Moves: Music as an Asset Class",
     speakers: [
-      {
-        name: "Barry Klarberg",
-        role: "MAI Regional President, Senior Managing Director",
-        isModerator: true,
-      },
-      {
-        name: "Andrew Batey",
-        role: "Co-Founder & Co-CEO, Beatdapp",
-      },
-      {
-        name: "Josh Housman",
-        role: "SVP, Media, Entertainment & Sports, Jefferies Investment Bank",
-      },
-      {
-        name: "Alex Silverstein",
-        role: "COO & Co-Founder, Too Lost",
-      },
+      { name: "Andrew Batey", role: "Co-Founder & Co-CEO, Beatdapp" },
+      { name: "Josh Housman", role: "SVP, Media, Entertainment & Sports, Jefferies Investment Bank" },
+      { name: "Peter Picado-Curtis", role: "Panelist" },
+      { name: "Alex Silverstein", role: "COO & Co-Founder, Too Lost" },
     ],
   },
   {
-    title: "A&R",
+    title: "Plugged In: Where Brands Meet Music Authentically",
     speakers: [
-      {
-        name: "Ian Cripps",
-        role: "A&R, Atlantic Records",
-      },
-      {
-        name: "Jeff Levin",
-        role: "A&R, Atlantic Records",
-      },
+      { name: "Chris King", role: "CMS Nashville" },
     ],
   },
   {
-    title: "Workshops",
+    title: "Artist Keynote",
     speakers: [
-      {
-        name: "Alex Silverstein",
-        role: "Entrepreneurship · COO & Co-Founder, Too Lost",
-      },
-      {
-        name: "Chris King",
-        role: "Where Music Meets Brands · CMS Nashville",
-      },
-      {
-        name: "Sony Pictures Television",
-        role: "Sync & Storytelling",
-      },
+      { name: "Quinn XCII", role: "Recording Artist" },
+      { name: "ayokay", role: "Recording Artist" },
     ],
   },
   {
-    title: "Artist",
+    title: "Sony Music SYNC Panel",
     speakers: [
-      {
-        name: "QUINN XCII",
-        role: "Recording Artists",
-      },
-      {
-        name: "AYOKay",
-        role: "Recording Artists",
-      },
+      { name: "Tony Scudellari", role: "Senior VP, Television Music, Sony Pictures Television" },
+      { name: "Sarah Bromberg", role: "VP of Music Supervision & Library at Raedio, Sony Pictures Television" },
+      { name: "Jognic Bontemps", role: "Composer and Musician, Sony Pictures Television" },
+      { name: "Marie Jacobsen", role: "Exectuive VP, Head of Current Programming, Sony Pictures Television", isModerator: true },
+    ],
+  },
+  {
+    title: "Making a Hit: Inside the Creative Process",
+    speakers: [
+      { name: "Leven Kali", role: "Artist, Producer, Songwriter" },
+      { name: "Sol Was", role: "Producer / Songwriter" },
+    ],
+  },
+  {
+    title: "Keynote",
+    speakers: [
+      { name: "Brendon Anthony", role: "Keynote Speaker" },
     ],
   },
 ];
