@@ -278,8 +278,8 @@ export const speakerSessions: SpeakerSession[] = [
 ];
 
 const sponsors: { name: string; logo?: string }[] = [
-  { name: "AEG", logo: "/sponsors/aeg presents.jpg" },
-  { name: "Assistants v Agents", logo: "/sponsors/assistantsvsagents_logo.jpg" },
+  { name: "AEG", logo: "/sponsors/aeg.png" },
+  { name: "Assistants v Agents", logo: "/sponsors/ava_logo.png" },
   { name: "Bravado", logo: "/sponsors/bravado logo.png" },
   { name: "Breakaway", logo: "/sponsors/breakaway.png" },
   { name: "Cahoots" },
@@ -288,15 +288,15 @@ const sponsors: { name: string; logo?: string }[] = [
   { name: "Depop", logo: "/sponsors/depop.png" },
   { name: "Mars, Inc", logo: "/sponsors/mars logo.svg" },
   { name: "MichGrads", logo: "/sponsors/michgrad.png" },
-  { name: "Nothing Bundt Cakes", logo: "/sponsors/nothing bundt cake.png" },
+  { name: "Nothing Bundt Cakes", logo: "/sponsors/nothingbundtcake.png" },
   { name: "Rolling Stone", logo: "/sponsors/rolling stone.png" },
   { name: "SB Vision", logo: "/sponsors/sbvision.png" },
-  { name: "[solidcore]", logo: "/sponsors/solidcore_Logo.jpg" },
+  { name: "[solidcore]", logo: "/sponsors/solidcore.png" },
   { name: "SoulCycle", logo: "/sponsors/Soulcyclelogo.png" },
   { name: "The · Team", logo: "/sponsors/the team logo.png" },
   { name: "Too Lost", logo: "/sponsors/too lost.png" },
   { name: "UMG", logo: "/sponsors/Universal_Music_Group_logo.svg" },
-  { name: "Unwell Network", logo: "/sponsors/unwell logo.jpg" },
+  { name: "Unwell Network", logo: "/sponsors/unwell.png" },
   { name: "UTA", logo: "/sponsors/uta_logo.svg" },
   { name: "Zell Lurie", logo: "/sponsors/ZLI_logo.png" },
 ];
