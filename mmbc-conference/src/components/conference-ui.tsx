@@ -1,4 +1,7 @@
+"use client";
+
 import type { ComponentType, ReactNode } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -7,6 +10,7 @@ import {
   CalendarDays,
   Map,
   UsersRound,
+  X,
 } from "lucide-react";
 import { NextUpCard } from "./next-up-card";
 import type { ScheduledEvent } from "./next-up-card";
@@ -548,6 +552,8 @@ export function SponsorsScreen() {
 }
 
 export function FloorPlanScreen() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <AppShell>
       <section className="space-y-5 pb-6">
@@ -555,25 +561,58 @@ export function FloorPlanScreen() {
         <SectionHeading
           title="Floor Plan"
           subtitle="Find your way around the venue."
-          hint="Tap to view full size. Pinch or scroll to zoom."
+          hint="Tap the map to zoom in. Pinch and scroll to explore."
         />
-        <a
-          href="/MMBC%20CONF%20MAP.jpeg"
-          className="block overflow-hidden rounded-2xl border-2 border-[#8f86d2]/60 bg-[#2b2178]/60 shadow-[0_20px_50px_rgba(0,0,0,0.4),0_0_0_1px_rgba(143,134,210,0.2),inset_0_1px_0_rgba(255,255,255,0.08)] transition active:scale-[0.99]"
+        <button
+          type="button"
+          onClick={() => setLightboxOpen(true)}
+          className="block w-full overflow-hidden rounded-2xl border-2 border-[#8f86d2]/60 bg-[#2b2178]/60 text-left shadow-[0_20px_50px_rgba(0,0,0,0.4),0_0_0_1px_rgba(143,134,210,0.2),inset_0_1px_0_rgba(255,255,255,0.08)] transition active:scale-[0.99]"
         >
-          <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-auto overscroll-contain">
+          <div className="relative aspect-[4/3] min-h-[220px] w-full">
             <Image
               src="/MMBC%20CONF%20MAP.jpeg"
               alt="MMBC Conference venue floor plan"
               width={1920}
               height={1440}
-              className="min-h-full min-w-full cursor-pointer object-contain object-top"
+              className="h-full w-full cursor-pointer object-contain object-top"
               sizes="(max-width: 430px) 100vw, 430px"
               priority
             />
           </div>
-        </a>
+        </button>
       </section>
+
+      {lightboxOpen ? (
+        <div
+          className="fixed inset-0 z-50 flex flex-col bg-black/95"
+          style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}
+          onClick={() => setLightboxOpen(false)}
+          onKeyDown={(e) => e.key === "Escape" && setLightboxOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(false)}
+            className="absolute right-3 top-3 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-white"
+            aria-label="Close"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div
+            className="flex-1 overflow-auto overscroll-contain p-4 pt-14"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src="/MMBC%20CONF%20MAP.jpeg"
+              alt="MMBC Conference venue floor plan"
+              className="mx-auto min-w-full object-contain"
+              style={{ maxWidth: "min(100%, 1200px)" }}
+            />
+          </div>
+          <p className="shrink-0 px-4 pb-4 text-center text-sm text-white/70">
+            Tap outside or X to close
+          </p>
+        </div>
+      ) : null}
     </AppShell>
   );
 }
