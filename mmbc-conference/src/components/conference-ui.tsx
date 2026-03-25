@@ -510,7 +510,7 @@ export function FloorPlanScreen() {
         >
           <div className="relative aspect-[4/3] min-h-[220px] w-full">
             <Image
-              src="/MMBC%20CONF%20MAP.jpeg"
+              src="/MMBC_Conf_Map_final.jpeg"
               alt="MMBC Conference venue floor plan"
               width={1920}
               height={1440}
@@ -542,7 +542,7 @@ export function FloorPlanScreen() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src="/MMBC%20CONF%20MAP.jpeg"
+              src="/MMBC_Conf_Map_final.jpeg"
               alt="MMBC Conference venue floor plan"
               className="mx-auto min-w-full object-contain"
               style={{ maxWidth: "min(100%, 1200px)" }}
